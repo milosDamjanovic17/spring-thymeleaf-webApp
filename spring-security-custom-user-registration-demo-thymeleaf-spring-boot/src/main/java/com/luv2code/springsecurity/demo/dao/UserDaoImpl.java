@@ -1,5 +1,7 @@
 package com.luv2code.springsecurity.demo.dao;
 
+import java.util.Collection;
+
 import javax.persistence.EntityManager;
 
 import org.hibernate.Session;
@@ -8,6 +10,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.luv2code.springsecurity.demo.entity.Role;
 import com.luv2code.springsecurity.demo.entity.User;
 
 @Repository
@@ -38,7 +41,8 @@ public class UserDaoImpl implements UserDao {
 	public void save(User theUser) {
 		// get current hibernate session
 		Session currentSession = entityManager.unwrap(Session.class);
-
+		
+		
 		// create the user ... finally LOL
 		currentSession.saveOrUpdate(theUser);
 	}

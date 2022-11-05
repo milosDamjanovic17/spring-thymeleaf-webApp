@@ -54,7 +54,7 @@ public class RegistrationController {
 		String userName = theCrmUser.getUserName();
 		logger.info("Processing registration form for: " + userName);
 		
-		// form validation
+		// form validation, proveravamo da li su svi uslovi ispunjeni u registration formi
 		 if (theBindingResult.hasErrors()){
 			 return "registration-form";
 	        }

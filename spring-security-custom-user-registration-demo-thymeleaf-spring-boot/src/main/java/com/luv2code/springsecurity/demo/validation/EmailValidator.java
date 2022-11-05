@@ -6,7 +6,12 @@ import java.util.regex.Pattern;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-// logika custom anotacije, klasa koja ispituje da li je unet email validan
+/*
+ * logika custom anotacije, klasa koja ispituje da li su polja ista, mora da implementira ConstraintValidator interface<A, T>
+ * 
+ * <A> the annotation type handled by an implementation, <T> the target type supported by an implementation
+ * 
+ */
 public class EmailValidator implements ConstraintValidator<ValidEmail, String> {
 
 	private Pattern pattern;

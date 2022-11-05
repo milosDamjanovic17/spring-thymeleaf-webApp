@@ -17,15 +17,19 @@ import com.luv2code.springsecurity.demo.validation.FieldMatchValidator;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface FieldMatch {
+	
 	String message() default "";
+	
+	String first();
+    String second();
 	
 	// additional code is mostly boilerplate code to conform to the Spring standards.
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
 	
-	String first();
-    String second();
+
     
+    // detalji implementacije CrmUser => line 10
     @Target({ ElementType.TYPE, ElementType.ANNOTATION_TYPE })
     @Retention(RetentionPolicy.RUNTIME)
     @Documented

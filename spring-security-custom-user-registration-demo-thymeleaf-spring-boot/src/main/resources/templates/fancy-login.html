@@ -39,12 +39,12 @@
 					        <div class="col-xs-15">
 					            <div>
 								
-									<!-- Check for login error -->																	
+									<!-- Check for login error,  error parameter is passed over automatically by Spring security in case of failed login -->																	
 									<div th:if="${param.error}" class="alert alert-danger col-xs-offset-1 col-xs-10">
 										Invalid username and password.
 									</div>
 		
-									<!-- Check for logout -->
+									<!-- Check for logout, logout message -->
 									<div th:if="${param.logout}"class="alert alert-success col-xs-offset-1 col-xs-10">
 										You have been logged out.
 									</div>

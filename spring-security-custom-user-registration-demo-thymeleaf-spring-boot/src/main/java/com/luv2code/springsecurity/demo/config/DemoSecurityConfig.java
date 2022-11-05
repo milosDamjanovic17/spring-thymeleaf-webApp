@@ -32,19 +32,19 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-			.antMatchers("/").hasRole("EMPLOYEE")
-			.antMatchers("/leaders/**").hasRole("MANAGER")
-			.antMatchers("/systems/**").hasRole("ADMIN")
+			.antMatchers("/").hasRole("EMPLOYEE") // everyone will have access to home page
+			.antMatchers("/leaders/**").hasRole("MANAGER") // only users with MANAGER role will be able to see /leaders/** pages
+			.antMatchers("/systems/**").hasRole("ADMIN") // only users with ADMIN role will be able to see /systems/** pages
 			.and()
 			.formLogin()
-				.loginPage("/showMyLoginPage")
-				.loginProcessingUrl("/authenticateTheUser")
-				.successHandler(customAuthenticationSuccessHandler)
+				.loginPage("/showMyLoginPage") // redirect to our login page => fancy-login.html
+				.loginProcessingUrl("/authenticateTheUser") // logic that will process login form
+				.successHandler(customAuthenticationSuccessHandler) // class that will redirect user to home page if login attempt was successfull
 				.permitAll()
 			.and()
-			.logout().permitAll()
+			.logout().permitAll() // everyone can logout
 			.and()
-			.exceptionHandling().accessDeniedPage("/access-denied");
+			.exceptionHandling().accessDeniedPage("/access-denied"); // redirect user if he tries to access unauthorized page
 		
 	}
 	

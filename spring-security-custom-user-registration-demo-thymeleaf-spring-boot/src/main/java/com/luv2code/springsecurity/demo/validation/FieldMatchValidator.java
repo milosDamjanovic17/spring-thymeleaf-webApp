@@ -5,7 +5,12 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.BeanWrapperImpl;
 
-//logika custom anotacije, klasa koja ispituje da li su polja ista
+/*
+ * logika custom anotacije, klasa koja ispituje da li su polja ista, mora da implementira ConstraintValidator interface<A, T>
+ * 
+ * <A> the annotation type handled by an implementation, <T> the target type supported by an implementation
+ * 
+ */
 public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Object> {
 	
 	private String firstFieldName;

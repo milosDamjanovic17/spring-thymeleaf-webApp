@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class LoginController {
-
+	
+	// redirect to main login page
 	@GetMapping("/showMyLoginPage")
 	public String showMyLoginPage() {
 		
