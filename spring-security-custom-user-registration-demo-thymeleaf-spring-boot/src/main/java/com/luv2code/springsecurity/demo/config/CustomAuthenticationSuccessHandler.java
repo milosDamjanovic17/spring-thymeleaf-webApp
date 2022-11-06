@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import com.luv2code.springsecurity.demo.entity.User;
 import com.luv2code.springsecurity.demo.service.UserService;
 
-// klasa u kojoj ako  
+// provera da li postoji user u DB 
 @Component // indicates that this class is considered for spring container auto-detection
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
