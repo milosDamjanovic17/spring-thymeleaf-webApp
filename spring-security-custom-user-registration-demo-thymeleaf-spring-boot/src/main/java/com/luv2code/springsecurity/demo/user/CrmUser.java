@@ -16,7 +16,7 @@ import com.luv2code.springsecurity.demo.validation.ValidEmail;
     	 */
 })
 
-// klasa koja sluzi za ucitavanje i validaciju podataka koje korisnik unese na registrationForm
+// klasa koja sluzi za ucitavanje i validaciju podataka koje korisnik unese na registrationForm, odavde cemo bindovati podatke u User entitet, CrmUser nije @Entity klasa
 public class CrmUser {
 
 	@NotNull(message = "is required")
