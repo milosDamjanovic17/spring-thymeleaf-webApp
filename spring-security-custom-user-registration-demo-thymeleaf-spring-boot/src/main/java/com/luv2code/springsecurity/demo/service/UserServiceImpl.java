@@ -49,25 +49,31 @@ public class UserServiceImpl implements UserService {
 		user.setLastName(crmUser.getLastName());
 		user.setEmail(crmUser.getEmail());
 
-		// give user default role of "employee"
+		/*	give user default role of "employee"
+		 *   
+		 *   Setovacemo da svaki registrovani user ima default role_employee, prosledjujemo vrednost kao String u RoleDaoImp koja vraca singleResult Role tipa
+		 *   
+		 */
 		user.setRoles(Arrays.asList(roleDao.findRoleByName("ROLE_EMPLOYEE")));
 
 		 // save user in the database
 		userDao.save(user);
 	}
 
+	// provera da li postoji username u DB prilikom logina
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		User user = userDao.findByUserName(userName);
 		if (user == null) {
-			System.out.println("USERNAME NOT FOUND");
+			System.out.println("AUTHENTICATION FAILED!");
 			throw new UsernameNotFoundException("Invalid username or password.");
 		}
 		return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(),
 				mapRolesToAuthorities(user.getRoles()));
 	}
-
+	
+	// attachujemo sve assigned role koje ima logovani user, preko ove metode cemo znati koji sve "skriveni" linkovi ce korisniku biti vidljivi
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 	}
